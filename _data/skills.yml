@@ -1,0 +1,22 @@
+- skill:
+  name: C++
+  level: 98%
+- skill:
+  name: Android
+  level: 98%
+- skill:
+  name: Java
+  level: 80%
+- skill:
+  name: Scikit-learn and Tensorflow
+  level: 65%
+- skill:
+  name: OpenCV
+  level: 65%
+- skill:
+  name: Python
+  level: 55%
+- skill:
+  name: Spark
+  level: 55%
+

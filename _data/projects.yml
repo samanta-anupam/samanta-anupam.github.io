@@ -1,0 +1,26 @@
+- intro:
+  description: #"A few projects and research projects that I have worked upon in these years"
+- project:
+  title: PROMPT
+  link: "http://ieeexplore.ieee.org/document/7823676/"
+  tagline: "A Tag recommendation system for the 100M Flickr Dataset(YFCC100M) leveraging personal and social contexts and multimodal analysis on images to recommend tags. Performed user-profile clustering, asymmetric tag co-occurrence probabilities of tags, neighbor voting, and random walk to recommend top 5 tags. Published in IEEE (DOI:10.1109/ISM.2016.0109)."
+- project:
+  title: Similar designed ads using Autoencoder
+  link: "#"
+  tagline: "Find Advertisements that have similar designs based on text layout position in an advertisements using text-OCR, Variational Autoencoder and Simlarity search. (Tensorflow, Scikit-learn)"
+- project:
+  title: HTML Ads Scraper
+  link: "https://github.com/samanta-anupam/Ads_scraper"
+  tagline: "A online ads scraper project to extract ads from webpages for creating a dataset of online ads. The aim of the dataset is to collect static html to capture design cues from any online ad campaign. (Selenium web driver, PhantomJS, Python)"
+- project:
+  title: Satellite Image Analysis for Water Crisis
+  link: "https://github.com/samanta-anupam/similar-water-regions"
+  tagline: "Find similar regions in world based on the trends of lost or new areas of permanent water sources using satellite water dataset analysis. This could be used to predict water quality, consumption and depletion patterns of other countries by extrapolating data from United States water bodies (USGS Dataset). (Spark, Python, LSH)"
+- project:
+  title: Pheno-predictor
+  link: "https://github.com/samanta-anupam/pheno-predictor"
+  tagline: "Classify phenotypes from 0.2 million Transcriptomic Features and 1.2 million Equivalence Classes output from Salmon (a genome mapping and quantification tool) using dimensionality reduction, Artificial Neural Networks and XGBoost. (Tensorflow, Scikit-learn, Python, XGBoost)"
+- project:
+  title: Koupe
+  #link: "#"
+  tagline: "A Ride Sharing Android Application. Worked on a startup to develop a car pooling app using Google Maps API’s and novel ride matching algorithm, to map riders and drivers heading in same direction. (Android)"

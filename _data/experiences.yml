@@ -1,0 +1,20 @@
+- experience:
+  role: Senior Software Engineer
+  time: Jan 2017 – Jul 2017
+  company: Rubique, Fintech Startup
+  details: |
+    Android Application - https://goo.gl/pk6cDv  
+    • Conceptualized, developed and deployed mobile application for Rubique  
+    • Implemented major projects such as search and filter module, share and earn module, document upload section for KYC, Chatbot for Rubique, Meeting module, etc.  
+    • Implemented redesign of the app along with animations and API integration with new back-end system.  
+    • Implemented several custom libraries, such as custom wrapper around Volley, [custom seekbar](https://github.com/samanta-anupam/android-collapse-calendar-view), [custom collapsible calendar class](https://github.com/samanta-anupam/android-collapse-calendar-view), custom animation classes, etc.  
+    • Technologies used: Firebase, REST APIs, Volley, Glide, SnappyDB, etc.
+- experience:
+  role: Software Engineer
+  time: 2014 - 2017
+  company: Samsung Research Institute, Noida
+  details: |
+    • Worked in System Apps team (Clock application) for all Android Samsung flagship devices and tablets.  
+    • Worked on the turbo speed technology in J210F, rewrote Google AOSP Clock app to follow Samsung UX/UI instead of legacy code achieving 40% faster performance with 10% better space efficiency.  
+    • Worked in Samsung HQ, South Korea for project development of Clock application in Tab E(T561).  
+    • Improved audio focus and flash focus (for visually impaired) of Alarm and Timer module to better handle interaction with other system applications.  
