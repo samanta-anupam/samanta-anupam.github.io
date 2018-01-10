@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<section class="section summary-section">
+
+  <h1 class="section-title"><i class="fa fa-rocket"></i>{{page.title}}</h1>
+
+    <div class="summary">
+      <p>{{page.description}}</p>
+    </div><!--//summary-->
+    
+</section><!--//section-->
+
+{% for post in site.categories[page.category] %}
+  <div class="item">
+	<span class="project-title">
+		<a href="{{ post.url | absolute_url }}">{{ post.title }}</a>
+	</span>
+	<span style="float: right;">{{ post.date | date_to_string}}</span>
+	{% if post.description %}
+		<span class="project-tagline">{{ post.description | markdownify }}</span>
+	{% endif %}
+  </div><!--//item-->
+{% endfor %} 
