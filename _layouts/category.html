@@ -22,3 +22,8 @@ layout: default
 	{% endif %}
   </div><!--//item-->
 {% endfor %} 
+
+{% if page.comments %}
+{% include disqus-comment.html %}
+{% include disqus.html %}
+{% endif %}
