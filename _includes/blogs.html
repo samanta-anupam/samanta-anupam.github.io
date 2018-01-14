@@ -1,0 +1,10 @@
+<div class="interests-container container-block">
+
+  <h2 class="container-block-title">Blogs</h2>
+
+    <ul class="list-unstyled interests-list">
+        {% for category in site.categories %}
+          <li><a href="/category/{{category[0]}}.html">{{ category[0] | capitalize }} ({{ category[1].size }})</a></li>
+        {% endfor %}
+    </ul>
+</div><!--//interests-->
