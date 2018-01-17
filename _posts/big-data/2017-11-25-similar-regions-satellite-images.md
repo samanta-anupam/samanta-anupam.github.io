@@ -1,33 +1,30 @@
 ---
-layout: default
+layout: post
 title:  Satellite Image Analysis
 date:   2017-11-25
 categories: big-data
 description: Find similar regions in satellite images by implementing singular value decomposition and locality sensitive hashing from scratch. [Dataset](https://lta.cr.usgs.gov/high_res_ortho)
 comments: true
+repo-link: https://github.com/samanta-anupam/big_data_assignments/blob/master/SatelliteImage_analysis_similar_region_search.ipynb
+repo-name: Satellite Image Analysis
 ---
-# {{page.title}}
-
-{{page.date | date_to_string}}
-
-{{page.description}}
 
 ---
 ## Table of contents
 1. [Goal](#goal)
 2. [Dataset](#dataset)
-3. [Reading Images]()
-    1. [Convert Images to array](#)
-    2. [Splitting Images](#)
-4. [Feature Vector from Images](#count-industry)
-    1. [Reducing resolution of images](#)
-    2. [Flattening images to 1-d vector](#)
-5. [Finding Similar images from PCA, LSH]()
-	1. [Locality Sensitive Hashing](#)
-	2. [Dimensionality Reduction using PCA(SVD)](#)
-5. [Results](#results)
+3. [Reading Images](#reading-images)
+    1. [Convert Images to array](#convert-images)
+    2. [Splitting Images](#split-images)
+4. [Feature Vector from Images](#image-feature-vector)
+    1. [Reducing resolution of images](#reduce-resolution)
+    2. [Flattening images to 1-d vector](#1d-images)
+5. [Finding Similar images from PCA, LSH](#find-similar-image)
+	1. [Locality Sensitive Hashing](#lsh)
+	2. [Dimensionality Reduction using PCA(SVD)](#pca)
+6. [Results](#results)
 
-## 1. Goal<a name="goal"></a>
+## 1. <a name="goal"></a>Goal
 ---
 
 The Goal of this post is to analyse the Satellite Images GeoTIFF file of Long Island Area. The main objectives of this post is to implement Locality Sensitive Hashing and dimensionality reduction to get further experience with Spark and data preprocessing and explore a different modality of data: Satellite Images. I would be using numpy as much as possible because of its speed over default lists and tuple available in python. The speedup against python collections is immense here, where I was able to complete the entire task in 5 mins, where as the same using python collections took more than 1.5 hours in the same AWS environment.
@@ -35,7 +32,7 @@ The Goal of this post is to analyse the Satellite Images GeoTIFF file of Long Is
 To reduce the overhead of large images, we will split it into smaller images. Next part would be to flatten images to a 1d vector, preserving the spatial information of images.
 Having the image as a single large feature vector, we use LSH to group similar images. Finally we use dimensionality reduction using PCA and using these smaller feature vectors, find nearest images in each group found using LSH.
 
-## 2. Dataset<a name="dataset"></a>
+## 2. <a name="dataset"></a>Dataset
 ---
 
 The Data consists of high resolution orthorectified satellite images. Orthorectified images satellite pictures which have been corrected for abnormalities due to tilt in photography or geography. As mentioned [here](https://lta.cr.usgs.gov/high_res_ortho)
@@ -50,10 +47,10 @@ Georeferenced orthoimages support a variety of geographic information analysis a
 
 We are using only the images of the Long Island area, and they consist of roughly around 50 Zipped TIFF Files. The images are of 2500x2500 or 5000x5000 resolution. Each pixel is 4-size array indicating 4 components [Red, Green, Blue, Infrared].
 
-## 3. Reading Images<a name="reading-images"></a>
+## 3. <a name="reading-images"></a>Reading Images
 ---
 
-### 3.1. Convert Images to array<a name="convert-images"></a>
+### 3.1. <a name="convert-images"></a>Convert Images to array
 
 As our dataset consists of files as zip file, we would like to read the zip file, and return the tiff file enclosed within the zip as array.
 
@@ -82,7 +79,7 @@ rdd_1b = rdd_1a.map(lambda x: (x[0], getOrthoTif(x[1])))s
 The output would look like
 > '/data/ortho/small_sample/3677453_2025190.zip', [image as array]
 
-### 3.2. Splitting Images<a name="split-images"></a>
+### 3.2. <a name="split-images"></a>Splitting Images
 
 Since the images are around 25 mb each, they take time to load and are a bit heavy. Hence we split them into smaller sized images.
 
@@ -143,7 +140,9 @@ Output:
 
 This output is the first subimage for the tiff file in 3677454_2025195.zip of size 500x500.
 
-### 3.3. Feature Vector from Images<a name="image-feature-vector"></a>
+# 4. <a name="image-feature-vector"></a>Feature Vector from Images
+
+### 4.1. <a name="reduce-resolution"></a>Reducing resolution of images
 
 For similarity search we need to convert these images to represent them as a feature vector. Directly flattening the image into a single long vector is not a good idea as we will lose spatial information within images. Hence we need to perform some operations on the images to make it a single vector. 
 
@@ -200,7 +199,7 @@ Output:
 >![Output image]({{ "/assets/images/big-data/satellite-image-fig-3.png" | absolute_url }})
 
 
-### 3.4. Images as 1-d vector<a name="flatten-image"></a>
+### 4.2. <a name="1d-images"></a>Images as 1-d vector
 
 The direct intensity value are not useful but rather how each pixel changes from one pixel to next. So we will be using row difference and column difference of the image as our new image. Also we clip these values to three values: -1,0,1 to represent the direction of change.
 
@@ -237,10 +236,10 @@ rdd_2e = rdd_2b.map(lambda x: (x[0], np.hstack((convert_values(x[1], 1), (conver
 This results in subimages being flattened into 4900 dimensions 1d vector. Now we can proceed to similarity search.
 
 
-## 4. Finding Similar images from PCA, LSH<a name="find-similar-regions"></a>
+## 5. <a name="find-similar-image"></a>Finding Similar images from PCA, LSH
 ---
 
-### 4.1. Locality Sensitive Hashing<a name="lsh"></a>
+### 5.1. <a name="lsh"></a>Locality Sensitive Hashing
 
 Locality sensitive hashing(LSH) is a really helpful concept when looking for similar objects. Without LSH we have to check the similarity with all possible object for a given queried object. But many of the objects can be rejected by clustering objects into similar group. These groups can have false positives but the probability is pretty low.
 
@@ -306,7 +305,7 @@ rdd_3b = rdd_3b_1.flatMap(lambda x: [(item, x[1]) for item in x[1]]).reduceByKey
 The resultant tuple would be 
 >(image, set-of-images-similar-to-this-image)
 
-### 4.2. Dimensionality Reduction using PCA(SVD) <a name="pca"></a>
+### 5.2. <a name="pca"></a>Dimensionality Reduction using PCA(SVD)
 
 Now that we have got flattened images, and group of images that are similar to it, we can use it to search for similar images within the group. But the problem lies in such large feature size images of 4900 dimensions. Not all the features are important and some of them can be ignored while computing for closeness between two images.
 
@@ -380,7 +379,7 @@ rdd_3c = rdd_3c_3.map(sort_by_dist)
 ```
 
 
-## Results<a name="results"></a>
+## 6. <a name="results"></a>Results
 ---
 
 To get the top 10 images close to any queried image we can use the following code:
