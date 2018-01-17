@@ -1,0 +1,14 @@
+<section class="section summary-section">
+
+  <h1 class="section-title"><i class="fa fa-rocket"></i>{{page.title}}</h1>
+
+    <div class="summary">
+      <p>{{page.date | date_to_string}}</p>
+      <p>{{page.description | markdownify}}</p>
+      <p>
+		{% if page.repo-link %}
+		<i class="fa fa-github"></i><a href="{{page.repo-link}}" target="_blank"> Github Code : {{page.repo-name}} </a>
+		{% endif %}</p>
+    </div><!--//summary-->
+    
+</section><!--//section-->

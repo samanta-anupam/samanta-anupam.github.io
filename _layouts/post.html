@@ -1,0 +1,15 @@
+---
+layout: default
+---
+
+{% include post-head.html %}
+
+{{content}}
+<br/>
+<br/>
+<br/>
+
+{% if page.comments %}
+{% include disqus-comment.html %}
+{% include disqus.html %}
+{% endif %}
