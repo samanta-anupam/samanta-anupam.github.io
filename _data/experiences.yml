@@ -1,4 +1,12 @@
 - experience:
+  role: Software Engineering Intern
+  time: May 2018 – Aug 2018
+  company: Evernote, Redwood City
+  details: |
+    • Implemented Keyboard shortcuts for Evernote's all new web platform for performing content formatting and various operations such as new note, adding tags and expanding/collapsing notes.
+    • Implemented Quick switcher, an app wide context switcher, to quickly navigate and search within notes notebooks and workspaces, and sort them according to the most recently accessed items.
+    • Frameworks used: ES6, Javascript, React, Redux, redux-sagas, ducks, chai-js
+- experience:
   role: Senior Software Engineer
   time: Jan 2017 – Jul 2017
   company: Rubique, Fintech Startup
