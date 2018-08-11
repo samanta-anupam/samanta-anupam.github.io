@@ -5,9 +5,9 @@
   link: "http://ieeexplore.ieee.org/document/7823676/"
   tagline: "A Tag recommendation system for the 100M Flickr Dataset(YFCC100M) leveraging personal and social contexts and multimodal analysis on images to recommend tags. Performed user-profile clustering, asymmetric tag co-occurrence probabilities of tags, neighbor voting, and random walk to recommend top 5 tags. Published in IEEE (DOI:10.1109/ISM.2016.0109)."
 - project:
-  title: Similar designed ads using Autoencoder
+  title: Design-as-embeddings and their application for improving naively generated advertisement designs.
   link: "#"
-  tagline: "Find Advertisements that have similar designs based on text layout position in an advertisements using text-OCR, Variational Autoencoder and Simlarity search. (Tensorflow, Scikit-learn)"
+  tagline: "Design-as-embeddings for deep learned based design improvements (Ongoing). Currently working on a project on using deep learning models to improve naively generated designs. We train a variational autoencoder on dataset of design blueprints with each category as a channel that can improve any naively generated design based on essential design aesthetics learned from the dataset.
 - project:
   title: HTML Ads Scraper
   link: "https://github.com/samanta-anupam/Ads_scraper"
