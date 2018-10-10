@@ -7,7 +7,7 @@
 - project:
   title: Design-as-embeddings and their application for improving naively generated advertisement designs.
   link: "#"
-  tagline: "Design-as-embeddings for deep learned based design improvements (Ongoing). Currently working on a project on using deep learning models to improve naively generated designs. We train a variational autoencoder on dataset of design blueprints with each category as a channel that can improve any naively generated design based on essential design aesthetics learned from the dataset."
+  tagline: "Currently working on a project for using deep learning models to improve naively generated designs. We train a variational autoencoder on dataset of design blueprints with each category as a channel that can improve any naively generated design based on essential design aesthetics learned from the dataset."
 - project:
   title: HTML Ads Scraper
   link: "https://github.com/samanta-anupam/Ads_scraper"
