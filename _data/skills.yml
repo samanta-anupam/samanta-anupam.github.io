@@ -1,12 +1,15 @@
 - skill:
   name: C++
-  level: 98%
+  level: 90%
 - skill:
   name: Android
-  level: 98%
+  level: 90%
 - skill:
   name: Java
   level: 80%
+- skill:
+  name: Javascript
+  level: 68%
 - skill:
   name: Scikit-learn and Tensorflow
   level: 65%
